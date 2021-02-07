@@ -1,0 +1,13 @@
+{
+  "STATUSES": {
+    "ACCEPTED":"ACCEPTED",
+    "RUNNING": "RUNNING",
+    "ERROR":"ERROR",
+    "COMPLETE" : "COMPLETE",
+    "NOT_FOUND" : "NOT FOUND",
+    "INVALID_URL": "INVALID URL"
+  },
+  "CACHE_TTL": 1000,
+  "MAX_THREADS": 30,
+  "CACHE_FILE_NAME": "cache-dump"
+}

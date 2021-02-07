@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link rel="stylesheet" href="../static/style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Website scanner</title>
+</head>
+<body>
+<div class="container">
+    <a href="/load" class="btn-ws">Load</a>
+    <a href="/scan" class="btn-ws">Scan</a>
+    <a href="/refresh" class="btn-ws">Refresh</a>
+    <img src="../static/logo.png" alt="" class="logo"/>
+    <h1>Website scanner</h1>
+    {% if url_list %}
+    <table>
+        {% if message %}
+    <p>{{message}}</p>
+      {% endif %}
+    <h3>Total URLs : {{url_list|length}}</h3>
+        <tr>
+            <th>UID</th>
+            <th>URL</th>
+            <th>STATUS</th>
+        </tr>
+        {% for url in url_list.values() %}
+        <tr>
+            <td> {{ url.uid }}</td>
+            <td> {{ url.url_string }}</td>
+            {% if url.url_status == 'ACCEPTED' %}
+            <td class="status-wrapper-accepted"> {{ url.url_status }}</td>
+            {% endif %}
+            {% if url.url_status == 'RUNNING' %}
+            <td class="status-wrapper-running"> {{ url.url_status }}</td>
+            {% endif %}
+            {% if url.url_status == 'COMPLETE' %}
+            <td class="status-wrapper-complete"> {{ url.url_status }}</td>
+            {% endif %}
+            {% if url.url_status == 'ERROR' %}
+            <td class="status-wrapper-error"> {{ url.url_status }}</td>
+            {% endif %}
+            {% if url.url_status == 'INVALID_URL' %}
+            <td class="status-wrapper-error"> {{ url.url_status }}</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</div>
+</body>
+</html>
